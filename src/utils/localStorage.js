@@ -1,5 +1,7 @@
-const getStoredWishlistBooks = () => {
-    const storedItem = localStorage.getItem("wishlist-books");
+
+
+const getStoredBooks = (key) => {
+    const storedItem = localStorage.getItem(key);
     if(storedItem) {
         return JSON.parse(storedItem);
     }
@@ -7,13 +9,13 @@ const getStoredWishlistBooks = () => {
 }
 
 
-const saveWishlistBooks = id => {
-    const storedItems = getStoredWishlistBooks();
-    const exists = storedItems.find(wishlistId => wishlistId === id);
+const saveBooks = (id, key) => {
+    const storedItems = getStoredBooks(key);
+    const exists = storedItems.find(bookId => bookId === id);
     if(!exists){
         storedItems.push(id);
-        localStorage.setItem('wishlist-books', JSON.stringify(storedItems))
+        localStorage.setItem(key, JSON.stringify(storedItems))
     }
 }
 
-export {saveWishlistBooks, getStoredWishlistBooks}
+export {saveBooks, getStoredBooks}

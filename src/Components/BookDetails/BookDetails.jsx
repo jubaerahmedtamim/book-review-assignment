@@ -1,9 +1,15 @@
-import React from 'react';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router-dom';
 import Tag from '../Tag/Tag';
-import { getStoredWishlistBooks, saveWishlistBooks } from '../../utils/localStorage';
+import toast from 'react-hot-toast';
+import { saveBooks } from '../../utils/localStorage';
+
+
 
 const BookDetails = () => {
+    const [readingList, setReadingList] = useState([]);
+    const [wishList, setWishList] = useState([]);
+
     const books = useLoaderData();
     const { id } = useParams();
     const intId = parseInt(id);
@@ -11,10 +17,32 @@ const BookDetails = () => {
     const book = books.find(book => book.bookId === intId);
     const { bookName, author, review, category, tags, totalPage, rating, publisher, yearOfPublishing } = book;
 
-    const handleWishlistBooks = () => {
-        saveWishlistBooks(id);
+    const handleWishlistBooks = (book) => {
+        if (readingList.find(read => read.id === book.id)) {
+            toast.error("This book has already read.")
+        }
+        else if (wishList.find(wish => wish.id === book.id)) {
+            toast.error("this book has already in wishlist.")
+        }
+        else {
+            saveBooks(id, "wishListBooks")
+            setWishList([...wishList, book]);
+            toast.success(`${bookName} is add to wishlist.`)
+        }
+    }
+
+    const handleReadListBooks = (book) => {
+        if (readingList.find(read => read.id === book.id)) {
+            toast.error("This book has already added to reading list.")
+        }
+        else {
+            saveBooks(id, "readingListBooks")
+            setReadingList([...readingList, book]);
+            toast.success(`${bookName} is add to reading list.`)
+        }
 
     }
+
 
     return (
         <div>
@@ -49,8 +77,8 @@ const BookDetails = () => {
                             </div>
                         </div>
                         <div className='flex gap-4'>
-                            <Link ><button className=' hover:bg-gray-200 rounded-lg border px-7 py-4 text-lg font-semibold'>Read</button></Link>
-                            <button onClick={handleWishlistBooks} className=' bg-[#50B1C9] text-white hover:bg-cyan-600  rounded-lg border px-7 py-4 text-lg font-semibold'>Wishlist</button>
+                            <button onClick={() => handleReadListBooks(book)} className=' hover:bg-gray-200 rounded-lg border px-7 py-4 text-lg font-semibold'>Read</button>
+                            <button onClick={() => handleWishlistBooks(book)} className=' bg-[#50B1C9] text-white hover:bg-cyan-600  rounded-lg border px-7 py-4 text-lg font-semibold'>Wishlist</button>
                         </div>
                     </div>
                 </div>
