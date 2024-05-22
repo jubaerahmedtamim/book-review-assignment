@@ -15,7 +15,6 @@ const ReadBookContent = () => {
         handleLoadData();
     },[])
 
-    
     useEffect(() => {
         const storedReadBooks = getStoredBooks("readingListBooks");
         if ( Array.isArray(books) && books.length > 0) { 

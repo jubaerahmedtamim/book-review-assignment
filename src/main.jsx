@@ -9,6 +9,7 @@ import ErrorPage from './Components/ErrorPage/ErrorPage'
 import ListedBooks from './Components/ListedBooks/ListedBooks'
 import { Toaster } from 'react-hot-toast';
 import ReadBookContent from './Components/ReadBookContent/ReadBookContent'
+import ListedContent from './Components/ListedContent/ListedContent'
 
 
 const router = createBrowserRouter([
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'wish-list',
-            element: <ReadBookContent></ReadBookContent>,
+            element: <ListedContent></ListedContent>,
+            loader: () => fetch('books.json')
           }
         ]
       }
