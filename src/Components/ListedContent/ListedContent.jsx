@@ -25,11 +25,26 @@ const ListedContent = () => {
     }, [books]);
 
     return (
-        <div className="mt-6 space-y-5">
-            {
-                storedBooksRead.map(storedBook => <ReadBookCard key={storedBook.bookId} storedBook={storedBook}></ReadBookCard>)
-            }
+
+        <div>
+            <div className='text-center my-4'>
+                <details className="dropdown">
+                    <summary className="m-1 btn">Sort by </summary>
+                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                        <li><a>All</a></li>
+                        <li><a>Rating</a></li>
+                        <li><a>Number of page</a></li>
+                        <li><a>Publishing year</a></li>
+                    </ul>
+                </details>
+            </div>
+            <div className="mt-6 space-y-5">
+                {
+                    storedBooksRead.map(storedBook => <ReadBookCard key={storedBook.bookId} storedBook={storedBook}></ReadBookCard>)
+                }
+            </div>
         </div>
+
     );
 };
 
