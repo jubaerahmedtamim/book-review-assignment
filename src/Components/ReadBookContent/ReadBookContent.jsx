@@ -30,7 +30,7 @@ const ReadBookContent = () => {
             setStoredBooksRead(booksRead);
         }
     }, [books]); 
-    console.log(storedBooksRead);
+    
     return (
         <div className="mt-6 space-y-5">
             {
