@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData, useParams } from 'react-router-dom';
 import Tag from '../Tag/Tag';
+import { getStoredWishlistBooks, saveWishlistBooks } from '../../utils/localStorage';
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -8,10 +9,13 @@ const BookDetails = () => {
     const intId = parseInt(id);
 
     const book = books.find(book => book.bookId === intId);
-
     const { bookName, author, review, category, tags, totalPage, rating, publisher, yearOfPublishing } = book;
 
-    console.log(books, intId, book);
+    const handleWishlistBooks = () => {
+        saveWishlistBooks(id);
+
+    }
+
     return (
         <div>
             <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
@@ -46,7 +50,7 @@ const BookDetails = () => {
                         </div>
                         <div className='flex gap-4'>
                             <Link ><button className=' hover:bg-gray-200 rounded-lg border px-7 py-4 text-lg font-semibold'>Read</button></Link>
-                            <Link ><button className=' bg-[#50B1C9] text-white hover:bg-cyan-600  rounded-lg border px-7 py-4 text-lg font-semibold'>Wishlist</button></Link>
+                            <button onClick={handleWishlistBooks} className=' bg-[#50B1C9] text-white hover:bg-cyan-600  rounded-lg border px-7 py-4 text-lg font-semibold'>Wishlist</button>
                         </div>
                     </div>
                 </div>
