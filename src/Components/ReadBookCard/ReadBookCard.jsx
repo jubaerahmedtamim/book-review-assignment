@@ -5,12 +5,12 @@ import { IoNewspaperOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 
 const ReadBookCard = ({ storedBook }) => {
-    const { bookId,bookName, author, image, totalPage, rating, tags, publisher, yearOfPublishing, category } = storedBook;
+    const { bookId, bookName, author, image, totalPage, rating, tags, publisher, yearOfPublishing, category } = storedBook;
     return (
         <div>
             <div className=" p-6 bg-base-200">
                 <div className="flex flex-col gap-7 lg:flex-row">
-                    <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className=" rounded-lg shadow-2xl" alt="Book Cover" />
+                    <img src={image} className="max-w-60 rounded-lg shadow-2xl" alt="Book Cover" />
                     <div className='flex-grow'>
                         <h1 className="text-2xl font-bold">{bookName}</h1>
                         <p className="py-6">By: {author}</p>

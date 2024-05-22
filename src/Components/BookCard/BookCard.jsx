@@ -8,8 +8,8 @@ const BookCard = ({ book }) => {
     return (
         <Link to={`/book/${bookId}`}>
             <div className="card w-96 bg-base-100 border border-[#13131326] rounded-2xl shadow-xl">
-                <figure className="px-6 py-6">
-                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
+                <figure className="px-6 py-6 ">
+                    <img src={image} alt="Shoes" className="rounded-xl h-60 w-80" />
                 </figure>
                 <div className="card-body">
                     <div className='flex gap-3'>

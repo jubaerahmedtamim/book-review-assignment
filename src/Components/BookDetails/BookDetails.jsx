@@ -15,7 +15,7 @@ const BookDetails = () => {
     const intId = parseInt(id);
 
     const book = books.find(book => book.bookId === intId);
-    const { bookName, author, review, category, tags, totalPage, rating, publisher, yearOfPublishing } = book;
+    const { bookName, image, author, review, category, tags, totalPage, rating, publisher, yearOfPublishing } = book;
 
     const handleWishlistBooks = (book) => {
         if (readingList.find(read => read.id === book.id)) {
@@ -47,9 +47,9 @@ const BookDetails = () => {
     return (
         <div>
             <section className="bg-gray-800 dark:bg-gray-100 text-gray-100 dark:text-gray-800">
-                <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-                    <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                        <img src="assets/svg/Business_SVG.svg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+                <div className="container flex flex-col justify-center p-6 mx-auto lg:flex-row lg:justify-between">
+                    <div className="flex items-center justify-center p-6 ">
+                        <img src={image} alt="" className="w-full" />
                     </div>
                     <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                         <h1 className="text-4xl font-bold mb-4">{bookName}</h1>
