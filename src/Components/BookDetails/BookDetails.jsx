@@ -25,7 +25,7 @@ const BookDetails = () => {
             toast.error("this book has already in wishlist.")
         }
         else {
-            saveBooks(id, "wishListBooks")
+            saveBooks(intId, "wishListBooks")
             setWishList([...wishList, book]);
             toast.success(`${bookName} is add to wishlist.`)
         }
@@ -36,7 +36,7 @@ const BookDetails = () => {
             toast.error("This book has already added to reading list.")
         }
         else {
-            saveBooks(id, "readingListBooks")
+            saveBooks(intId, "readingListBooks")
             setReadingList([...readingList, book]);
             toast.success(`${bookName} is add to reading list.`)
         }
