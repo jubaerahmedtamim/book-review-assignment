@@ -46,14 +46,15 @@ const PageToRead = () => {
             setStoredBooksRead(booksRead);
         }
     }, [books]);
-    console.log(storedBooksRead);
+    console.log(storedBooksRead.length);
+    if(storedBooksRead.length === 0) return <h1 className='text-3xl text-center pt-32'>No book was added as wishlist.</h1>
     return (
         <ResponsiveContainer width="90%" height={400}>
             <BarChart width='90%' height={300} data={storedBooksRead}>
                 <XAxis dataKey="bookName" />
-                <YAxis />
+                <YAxis dataKey="totalPage" />
                 <Tooltip content="" />
-                <Bar dataKey="totalPage" fill="#8884d8"
+                <Bar dataKey="totalPage" fill="#0085F6"
                     shape={<TriangleBar />} />
             </BarChart>
         </ResponsiveContainer>
